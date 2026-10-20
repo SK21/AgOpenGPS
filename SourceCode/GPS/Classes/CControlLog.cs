@@ -139,7 +139,16 @@ namespace AgOpenGPS
             {
                 mf.SendPgnToLoop(diagRequest);
 
-                string settings = SettingsSnapshot();
+                string settings;
+                try
+                {
+                    settings = SettingsSnapshot();
+                }
+                catch (Exception ex)
+                {
+                    Log.ErrorWriter("CControlLog", "SettingsSnapshot", "settings not recorded", ex);
+                    settings = lastSettings;
+                }
                 if (settings != lastSettings)
                 {
                     lastSettings = settings;
@@ -171,7 +180,19 @@ namespace AgOpenGPS
         /// </summary>
         public void WriteFixRow()
         {
-            if (IsOn && fixWriter != null) WriteFix();
+            // runs inside the position update - a logging fault must never disturb guidance
+            if (IsOn && fixWriter != null)
+            {
+                try
+                {
+                    WriteFix();
+                }
+                catch (Exception ex)
+                {
+                    Log.ErrorWriter("CControlLog", "WriteFixRow", "logging stopped", ex);
+                    Stop();
+                }
+            }
         }
 
         private void WriteFix()
