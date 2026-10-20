@@ -286,6 +286,9 @@ namespace AgOpenGPS
                 //reset the counter
                 oneSecondCounter = 0;
 
+                //control data log - flush, settings check, module diagnostics request
+                controlLog.OneSecond();
+
                 //counter used for saving field in background - is actually 30 second
                 fileSaveCounter++;
 
@@ -568,6 +571,9 @@ namespace AgOpenGPS
             }
 
             if (timerSim.Enabled) gpsHz = 10;
+
+            //control data log on/off
+            SetControlLog();
 
             //set the flag mark button to red dot
             btnFlag.Image = Properties.Resources.FlagRed;

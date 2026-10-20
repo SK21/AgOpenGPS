@@ -1010,6 +1010,9 @@ namespace AgOpenGPS
             //out serial to autosteer module  //indivdual classes load the distance and heading deltas 
             SendPgnToLoop(p_254.pgn);
 
+            //control data log - one row per fix, holds exactly what was just sent
+            controlLog.WriteFixRow();
+
             //for average cross track error
             if (guidanceLineDistanceOff < 29000)
             {

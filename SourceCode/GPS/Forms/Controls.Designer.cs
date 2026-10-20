@@ -2155,6 +2155,20 @@ namespace AgOpenGPS
             form.Show(this);
             this.Activate();
         }
+        private void controlLogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Settings.Default.setMenu_isControlLogOn = controlLogToolStripMenuItem.Checked;
+            Settings.Default.Save();
+            SetControlLog();
+        }
+        public void SetControlLog()
+        {
+            controlLog.SetEnabled(Settings.Default.setMenu_isControlLogOn);
+
+            // reflect the actual state - logging stays off if the files could not be opened
+            controlLogToolStripMenuItem.Checked = controlLog.IsOn;
+            controlLogToolStripMenuItem.Text = controlLog.IsOn ? "Control Log: On" : "Control Log: Off";
+        }
         private void webcamToolStrip_Click(object sender, EventArgs e)
         {
             Form form = new FormWebCam();

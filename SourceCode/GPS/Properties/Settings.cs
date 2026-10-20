@@ -43,6 +43,7 @@ namespace AgOpenGPS.Properties
         public bool setMenu_isSideGuideLines = false;
         public bool setMenu_isPureOn = true;
         public bool setMenu_isSimulatorOn = true;
+        public bool setMenu_isControlLogOn = false;
         public bool setMenu_isSpeedoOn = false;
         public bool setMenu_isLightbarNotSteerBar = false;
         public bool setDisplay_isDayMode = true;

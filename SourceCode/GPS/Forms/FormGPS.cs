@@ -275,6 +275,11 @@ namespace AgOpenGPS
         /// </summary>
         public CSmartWAS smartWAS;
 
+        /// <summary>
+        /// Control data logging to CSV
+        /// </summary>
+        public CControlLog controlLog;
+
         #endregion // Class Props and instances
 
         //The method assigned to the PowerModeChanged event call
@@ -407,6 +412,9 @@ namespace AgOpenGPS
 
             //Smart WAS Calibration system
             smartWAS = new CSmartWAS(this);
+
+            //Control data logging
+            controlLog = new CControlLog(this);
         }
 
         private void FormGPS_Load(object sender, EventArgs e)
@@ -864,6 +872,9 @@ namespace AgOpenGPS
                     // System Log
                     Log.FileSaveSystemEvents();
 
+                    // Control data log
+                    controlLog.Stop();
+
                     // STEP 4: Finalizing
                     await Task.Delay(500);
                     savingForm.UpdateStep("Finalize", gStr.gsSaveAllDone, SavingStepState.Done);
@@ -922,6 +933,9 @@ namespace AgOpenGPS
 
                     // System Log
                     Log.FileSaveSystemEvents();
+
+                    // Control data log
+                    controlLog.Stop();
 
                     // Finalizing
                     await Task.Delay(500);

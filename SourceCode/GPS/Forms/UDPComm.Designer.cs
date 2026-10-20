@@ -237,6 +237,15 @@ namespace AgOpenGPS
                             //Actual PWM
                             mc.pwmDisplay = data[12];
 
+                            //control data log - module reply timing
+                            controlLog.Steer253Received();
+
+                            break;
+                        }
+
+                    case CControlLog.DiagPGN: //249 steer module diagnostics, control data log
+                        {
+                            controlLog.WriteModuleRow(data);
                             break;
                         }
 

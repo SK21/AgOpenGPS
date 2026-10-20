@@ -93,6 +93,7 @@ namespace AgOpenGPS
             this.rollCheckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.boundaryToolToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.eventViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.controlLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SmoothABtoolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteContourPathsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.webcamToolStrip = new System.Windows.Forms.ToolStripMenuItem();
@@ -945,6 +946,7 @@ namespace AgOpenGPS
             this.steerChartStripMenu,
             this.boundaryToolToolStripMenu,
             this.eventViewerToolStripMenuItem,
+            this.controlLogToolStripMenuItem,
             this.SmoothABtoolStripMenu,
             this.deleteContourPathsToolStripMenuItem,
             this.webcamToolStrip,
@@ -1036,7 +1038,16 @@ namespace AgOpenGPS
             this.eventViewerToolStripMenuItem.Size = new System.Drawing.Size(450, 70);
             this.eventViewerToolStripMenuItem.Text = "Log Viewer";
             this.eventViewerToolStripMenuItem.Click += new System.EventHandler(this.eventViewerToolStripMenuItem_Click);
-            // 
+            //
+            // controlLogToolStripMenuItem
+            //
+            this.controlLogToolStripMenuItem.CheckOnClick = true;
+            this.controlLogToolStripMenuItem.Image = global::AgOpenGPS.Properties.Resources.FileSave;
+            this.controlLogToolStripMenuItem.Name = "controlLogToolStripMenuItem";
+            this.controlLogToolStripMenuItem.Size = new System.Drawing.Size(450, 70);
+            this.controlLogToolStripMenuItem.Text = "Control Log: Off";
+            this.controlLogToolStripMenuItem.Click += new System.EventHandler(this.controlLogToolStripMenuItem_Click);
+            //
             // SmoothABtoolStripMenu
             // 
             this.SmoothABtoolStripMenu.Image = global::AgOpenGPS.Properties.Resources.ABSmooth;
@@ -3020,6 +3031,7 @@ namespace AgOpenGPS
         public System.Windows.Forms.ToolStripMenuItem steerChartStripMenu;
         private System.Windows.Forms.ToolStripMenuItem webcamToolStrip;
         private System.Windows.Forms.ToolStripMenuItem offsetFixToolStrip;
+        private System.Windows.Forms.ToolStripMenuItem controlLogToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel panelNavigation;
         public System.Windows.Forms.Button btn2D;
         public System.Windows.Forms.Button btn3D;
